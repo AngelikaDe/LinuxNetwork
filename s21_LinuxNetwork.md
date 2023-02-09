@@ -50,3 +50,38 @@
 ### 3.2. iperf3 utility
 ![Part_3_2_1](screenshots/Part_3_2_1.png)
 ![Part_3_2_2](screenshots/Part_3_2_2.png)
+## Part 4. Network firewall
+### 4.1 iptables utility
+* /etc/firewall.sh file simulating the firewall on ws1 and ws2
+![Part_4_1](screenshots/Part_4_1.png)
+### 4.2 nmap utility
+![Part_4_2](screenshots/Part_4_2.png)
+![Part_4_3](screenshots/Part_4_3.png)
+![Part_4_3](screenshots/Part_4_4.png)
+## Part 5. Static network routing
+### 5.1. Configuration of machine addresses
+* etc/netplan/00-installer-config.yaml according to the network in the picture
+![Part_5_1](screenshots/Part_5_1.png)
+* ping ws22 from ws21. Similarly ping r1 from ws11
+![Part_5_1_1](screenshots/Part_5_1_1.png)
+### 5.2. Enabling IP forwarding
+* Enable IP forwarding using `sysctl -w net.ipv4.ip_forward=1` command
+![Part_5_2_1](screenshots/Part_5_2_1.png)
+* to /etc/sysctl.conf file added `net.ipv4.ip_forward = 1` to enabled permanently IP forwarding.
+![Part_5_2_2](screenshots/Part_5_2_2.png)
+![Part_5_2_3](screenshots/Part_5_2_3.png)
+### 5.3. Default route configuration
+* The default route (gateway) for the workstations configured
+![Part_5_3_1](screenshots/Part_5_3_1.png)
+* `ip r` called 
+![Part_5_3_2](screenshots/Part_5_3_2.png)
+* ping r2 router from ws11 and show on r2 that the ping is reaching using `tcpdump -tn -i eth1` command
+![Part_5_3_3](screenshots/Part_5_3_3.png)
+### 5.4. Adding static routes
+* static routes to r1 and r2 in configuration file added
+![Part_5_4_1](screenshots/Part_5_4_1.png)
+![Part_5_4_2](screenshots/Part_5_4_2.png)
+* `ip r` called 
+![Part_5_4_3](screenshots/Part_5_4_3.png)
+* `ip r list 10.10.0.0/[netmask]` and `ip r list 0.0.0.0/0` commands on ws11 ran
+![Part_5_4_4](screenshots/Part_5_4_4.png)
